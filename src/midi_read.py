@@ -7,6 +7,7 @@ class MidiDevice (object):
     self.device_name = None
     self.device_type = None
     self.device_opened = None
+    self.device = None
 
   def show_info(self):
     print "Device ID: ", self.device_id
@@ -28,6 +29,8 @@ class MidiDevice (object):
   def setDevice(self, idnum):
     r = pm.get_device_info(idnum)
     if r is not None:
+      self.device = pm.Input(idnum)
+
       self.device_id = idnum
       self.device_name = r[1]
       if r[2]:
