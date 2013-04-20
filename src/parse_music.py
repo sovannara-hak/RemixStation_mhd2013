@@ -46,3 +46,9 @@ class MusicParser(object):
     else:
       print "Analyze first"
 
+  def render(self, sample_index_list, outfilename):
+    sample_list = []
+    for el in sample_index_list:
+      sample_list.append(self.samples[el])
+    audio.getpieces(self.audio_file, sample_list).encode(outfilename)
+
