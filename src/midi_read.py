@@ -61,7 +61,7 @@ class RemixStation(object):
 	if msg[0][0][0] == 144:
 	  key = msg[0][0][1]
 	  self.sound[key-48].play()
-	if msg[0][0][0] == 128:
-	  self.sound[key-48].stop()
+	#if msg[0][0][0] == 128:
+	#  self.sound[key-48].stop()
 
 
