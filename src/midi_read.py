@@ -11,6 +11,34 @@ class MidiDevice (object):
     self.device_type = None
     self.device_opened = None
     self.device = None
+    self.keymap = {}
+    self.fill_keymap()
+
+  def fill_keymap(self):
+    self.keymap["48"] = "C"
+    self.keymap["49"] = "C#"
+    self.keymap["50"] = "D"
+    self.keymap["51"] = "D#"
+    self.keymap["52"] = "E"
+    self.keymap["53"] = "F"
+    self.keymap["54"] = "F#"
+    self.keymap["55"] = "G"
+    self.keymap["56"] = "G#"
+    self.keymap["57"] = "A"
+    self.keymap["58"] = "A#"
+    self.keymap["59"] = "B"
+    self.keymap["60"] = "C"
+    self.keymap["61"] = "C#"
+    self.keymap["62"] = "D"
+    self.keymap["63"] = "D#"
+    self.keymap["64"] = "E"
+    self.keymap["65"] = "F"
+    self.keymap["66"] = "F#"
+    self.keymap["67"] = "G"
+    self.keymap["68"] = "G#"
+    self.keymap["69"] = "A"
+    self.keymap["70"] = "A#"
+    self.keymap["71"] = "B"
 
   def show_info(self):
     print "Device ID: ", self.device_id
@@ -48,6 +76,8 @@ class RemixStation(object):
     self.path = path
     self.prefix = prefix
     self.number_items = number_items
+    self.log_enabled = True
+    self.log = []
 
   def load(self):
     self.sound = []
@@ -61,7 +91,13 @@ class RemixStation(object):
 	if msg[0][0][0] == 144:
 	  key = msg[0][0][1]
 	  self.sound[key-48].play()
+	  if str(key) in self.midi_dev.keymap:
+	    print self.midi_dev.keymap[str(key)]
+	  if self.log_enabled:
+	    self.log.append(key-48)
 	#if msg[0][0][0] == 128:
 	#  self.sound[key-48].stop()
+
+
 
 
