@@ -15,7 +15,22 @@ class MusicParser(object):
   def analyze_bars(self):
     self.samples = []
     self.samples = self.audio_file.analysis.bars
-    self.number_items = len(self.bars)
+    self.number_items = len(self.samples)
+
+  def analyze_sections(self):
+    self.samples = []
+    self.samples = self.audio_file.analysis.sections
+    self.number_items = len(self.samples)
+
+  def analyze_segments(self):
+    self.samples = []
+    self.samples = self.audio_file.analysis.segments
+    self.number_items = len(self.samples)
+
+  def analyze_tatums(self):
+    self.samples = []
+    self.samples = self.audio_file.analysis.tatums
+    self.number_items = len(self.samples)
 
   def analyze_beats(self):
     self.samples = []
