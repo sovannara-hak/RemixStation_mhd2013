@@ -12,15 +12,16 @@ cm.list_devices()
 cm.setDevice(3)
 
 testmp3 = "/home/sovan/compil/julesverne/share/echo-nest-remix-examples/music/Raleigh_Moncrief-Guppies.mp3" 
+testmp3 = "/home/sovan/blood.m4a"
 path = "/tmp/"
 prefix = "Ral"
 
 mp = mhd.MusicParser(testmp3)
 
 print "Analize..."
-mp.analize_bars()
+mp.analyze_bars()
 print "Write samples..."
-mp.write_bars_sample(path, prefix)
+mp.write_sample(path, prefix)
 
 rs = mhd.RemixStation(cm, path, prefix, mp.number_items)
 print "Loading..."
