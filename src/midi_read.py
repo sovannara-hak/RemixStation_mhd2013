@@ -76,7 +76,8 @@ class RemixStation(object):
     self.path = path
     self.prefix = prefix
     self.number_items = number_items
-    self.log_enabled = True
+    self.log_enabled = False
+    self.play_mode = True
     self.log = []
 
   def load(self):
@@ -84,8 +85,16 @@ class RemixStation(object):
     for i in range(self.number_items):
       self.sound.append(mix.Sound(self.path+self.prefix+str(i)+".wav"))
 
+  def rec(self):
+    self.log_enabled = True
+    print "Start recording"
+
+  def pause(self):
+    self.log_enabled = False
+    print "Stop recording"
+
   def play(self):
-    while 1:
+    #while self.play_mode:
       msg = self.midi_dev.device.read(1)
       if len(msg):
 	if msg[0][0][0] == 144:
@@ -95,8 +104,9 @@ class RemixStation(object):
 	    print self.midi_dev.keymap[str(key)]
 	  if self.log_enabled:
 	    self.log.append(key-48)
-	#if msg[0][0][0] == 128:
-	#  self.sound[key-48].stop()
+	if msg[0][0][0] == 128:
+	  key = msg[0][0][1]
+	  self.sound[key-48].stop()
 
 
 
