@@ -14,6 +14,7 @@ class MusicParser(object):
 
   def analize_bars(self):
     self.bars = self.audio_file.analysis.bars
+    self.number_items = len(self.bars)
 
   def write_bars_sample(self, path, prefix):
     suffix = 0
