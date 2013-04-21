@@ -17,30 +17,33 @@ class MidiDevice (object):
     self.fill_keymap()
 
   def fill_keymap(self):
-    self.keymap["48"] = "C"
-    self.keymap["49"] = "C#"
-    self.keymap["50"] = "D"
-    self.keymap["51"] = "D#"
-    self.keymap["52"] = "E"
-    self.keymap["53"] = "F"
-    self.keymap["54"] = "F#"
-    self.keymap["55"] = "G"
-    self.keymap["56"] = "G#"
-    self.keymap["57"] = "A"
-    self.keymap["58"] = "A#"
-    self.keymap["59"] = "B"
-    self.keymap["60"] = "C"
-    self.keymap["61"] = "C#"
-    self.keymap["62"] = "D"
-    self.keymap["63"] = "D#"
-    self.keymap["64"] = "E"
-    self.keymap["65"] = "F"
-    self.keymap["66"] = "F#"
-    self.keymap["67"] = "G"
-    self.keymap["68"] = "G#"
-    self.keymap["69"] = "A"
-    self.keymap["70"] = "A#"
-    self.keymap["71"] = "B"
+    key = 48
+    for i in range(20):
+      self.keymap[str(key)] = "C"
+      key += 1
+      self.keymap[str(key)] = "C#"
+      key += 1
+      self.keymap[str(key)] = "D"
+      key += 1
+      self.keymap[str(key)] = "D#"
+      key += 1
+      self.keymap[str(key)] = "E"
+      key += 1
+      self.keymap[str(key)] = "F"
+      key += 1
+      self.keymap[str(key)] = "F#"
+      key += 1
+      self.keymap[str(key)] = "G"
+      key += 1
+      self.keymap[str(key)] = "G#"
+      key += 1
+      self.keymap[str(key)] = "A"
+      key += 1
+      self.keymap[str(key)] = "A#"
+      key += 1
+      self.keymap[str(key)] = "B"
+      key += 1
+
 
   def show_info(self):
     print "Device ID: ", self.device_id
