@@ -3,6 +3,8 @@ import pygame.midi as pm
 import pygame
 import pygame.mixer as mix
 
+import time
+
 class MidiDevice (object):
 
   def __init__(self):
@@ -92,6 +94,14 @@ class RemixStation(object):
   def pause(self):
     self.log_enabled = False
     print "Stop recording"
+
+  def preview(self):
+    for l in self.log:
+      s = self.sound[l]
+      l=s.get_length()
+      s.play()
+      time.sleep(l)
+
 
   def play(self):
     #while self.play_mode:
