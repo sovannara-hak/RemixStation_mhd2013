@@ -44,9 +44,7 @@ prefix = "Ral"
 
 mp = mhd.MusicParser(testmp3)
 
-print "Analize..."
 mp.analyze_bars()
-print "Write samples..."
 mp.write_sample(path, prefix)
 
 rs = mhd.RemixStation(cm, path, prefix, mp.number_items)
@@ -74,6 +72,9 @@ def stop():
 
 def render(out):
   mp.render(rs.log, out)
+
+def preview(size):
+  rs.preview(size)
 
 embed()
 
