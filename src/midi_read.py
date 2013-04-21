@@ -95,8 +95,13 @@ class RemixStation(object):
     self.log_enabled = False
     print "Stop recording"
 
-  def preview(self):
-    for l in self.log:
+  def preview(self, size=0):
+    if size == 0:
+      list_index = self.log
+    else:
+      list_index = self.log[-size:]
+
+    for l in list_index:
       s = self.sound[l]
       l=s.get_length()
       s.play()
